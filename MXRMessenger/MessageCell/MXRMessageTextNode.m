@@ -51,12 +51,10 @@
 }
 
 - (instancetype)init {
-    ASDISPLAYNODE_NOT_DESIGNATED_INITIALIZER();
     return [self initWithText:nil configuration:nil cornersToApplyMaxRadius:UIRectCornerAllCorners];
 }
 
 - (instancetype)initWithConfiguration:(MXRMessageNodeConfiguration *)configuration {
-    ASDISPLAYNODE_NOT_DESIGNATED_INITIALIZER();
     return [self initWithText:nil configuration:nil cornersToApplyMaxRadius:UIRectCornerAllCorners];
 }
 
