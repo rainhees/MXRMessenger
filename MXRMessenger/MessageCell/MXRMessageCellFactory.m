@@ -70,7 +70,7 @@ static inline BOOL MXRMessageContextNextShowsDate(MXRMessageContext c) { return 
 }
 
 - (MXRMessageTextCellNodeBlock)cellNodeBlockWithHtmlText:(NSString *)text tableNode:(ASTableNode *)tableNode row:(NSInteger)row {
-    return (MXRMessageTextCellNodeBlock)[self cellNodeBlockWithType:MXRMessageContentTypeTextOnly text:text imageURL:nil showsPlayButton:NO media:nil tableNode:tableNode row:row];
+    return (MXRMessageTextCellNodeBlock)[self cellNodeBlockWithType:MXRMessageContentTypeHtmlOnly text:text imageURL:nil showsPlayButton:NO media:nil tableNode:tableNode row:row];
 }
 
 - (MXRMessageImageCellNodeBlock)cellNodeBlockWithImageURL:(NSURL *)imageURL showsPlayButton:(BOOL)showsPlayButton tableNode:(ASTableNode *)tableNode row:(NSInteger)row {
