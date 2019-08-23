@@ -50,6 +50,27 @@
     return self;
 }
 
+- (instancetype)initWithHtmlText:(NSString *)text configuration:(MXRMessageTextConfiguration *)configuration cornersToApplyMaxRadius:(UIRectCorner)cornersHavingRadius {
+    self = [super initWithConfiguration:configuration];
+    if (self) {
+        self.automaticallyManagesSubnodes = YES;
+        _configuration = configuration;
+        _cornersHavingRadius = cornersHavingRadius;
+        
+        _textNode = [[ASTextNode alloc] init];
+        _textNode.layerBacked = YES;
+
+        NSMutableAttributedString * attrStr = [[NSMutableAttributedString alloc] initWithData:[text dataUsingEncoding:NSUnicodeStringEncoding] 
+                                   options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType}
+                        documentAttributes:nil error:nil];
+        _textNode.attributedText = attrStr;
+        _backgroundImageNode = [[ASImageNode alloc] init];
+        _backgroundImageNode.layerBacked = YES;
+        [self redrawBubble];
+    }
+    return self;
+}
+
 - (instancetype)init {
     return [self initWithText:nil configuration:nil cornersToApplyMaxRadius:UIRectCornerAllCorners];
 }

@@ -16,7 +16,7 @@
 @interface MXRMessageTextNode : MXRMessageContentNode
 
 - (instancetype)initWithText:(NSString*)text configuration:(MXRMessageTextConfiguration*)configuration cornersToApplyMaxRadius:(UIRectCorner)cornersHavingRadius NS_DESIGNATED_INITIALIZER;
-
+- (instancetype)initWithHtmlText:(NSString *)text configuration:(MXRMessageTextConfiguration *)configuration cornersToApplyMaxRadius:(UIRectCorner)cornersHavingRadius NS_DESIGNATED_INITIALIZER;
 @property (nonatomic, strong, readonly) ASTextNode* textNode;
 @property (nonatomic, strong, readonly) ASImageNode* backgroundImageNode;
 
