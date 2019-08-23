@@ -69,6 +69,10 @@ static inline BOOL MXRMessageContextNextShowsDate(MXRMessageContext c) { return 
     return (MXRMessageTextCellNodeBlock)[self cellNodeBlockWithType:MXRMessageContentTypeTextOnly text:text imageURL:nil showsPlayButton:NO media:nil tableNode:tableNode row:row];
 }
 
+- (MXRMessageTextCellNodeBlock)cellNodeBlockWithHtmlText:(NSString *)text tableNode:(ASTableNode *)tableNode row:(NSInteger)row {
+    return (MXRMessageTextCellNodeBlock)[self cellNodeBlockWithType:MXRMessageContentTypeTextOnly text:text imageURL:nil showsPlayButton:NO media:nil tableNode:tableNode row:row];
+}
+
 - (MXRMessageImageCellNodeBlock)cellNodeBlockWithImageURL:(NSURL *)imageURL showsPlayButton:(BOOL)showsPlayButton tableNode:(ASTableNode *)tableNode row:(NSInteger)row {
     return (MXRMessageImageCellNodeBlock)[self cellNodeBlockWithType:MXRMessageContentTypeImageOnly text:nil imageURL:imageURL showsPlayButton:showsPlayButton media:nil tableNode:tableNode row:row];
 }
@@ -120,11 +124,18 @@ static inline BOOL MXRMessageContextNextShowsDate(MXRMessageContext c) { return 
             MXRMessageTextNode* textNode = [[MXRMessageTextNode alloc] initWithText:text configuration:config.textConfig cornersToApplyMaxRadius:cornersHavingRadius];
             textNode.delegate = self.contentNodeDelegate;
             cell.messageContentNode = textNode;
-        } else if (type == MXRMessageContentTypeImageOnly) {
+        }
+        else if (type == MXRMessageContentTypeHtmlOnly) {
+            MXRMessageTextNode* textNode = [[MXRMessageTextNode alloc] initWithHtmlText:text configuration:config.textConfig cornersToApplyMaxRadius:cornersHavingRadius];
+            textNode.delegate = self.contentNodeDelegate;
+            cell.messageContentNode = textNode;
+        } 
+        else if (type == MXRMessageContentTypeImageOnly) {
             MXRMessageImageNode* imageNode = [[MXRMessageImageNode alloc] initWithImageURL:imageURL configuration:config.imageConfig cornersToApplyMaxRadius:cornersHavingRadius showsPlayButton:showsPlayButton];
             imageNode.delegate = self.contentNodeDelegate;
             cell.messageContentNode = imageNode;
-        } else if (type == MXRMessageContentTypeMediaCollectionOnly) {
+        }
+        else if (type == MXRMessageContentTypeMediaCollectionOnly) {
             MXRMessageMediaCollectionNode* mediaCollectionNode = [[MXRMessageMediaCollectionNode alloc] initWithMedia:media configuration:config.mediaCollectionConfig cornersToApplyMaxRadius:cornersHavingRadius];
             mediaCollectionNode.mediaCollectionDelegate = self.mediaCollectionDelegate;
             cell.messageContentNode = mediaCollectionNode;

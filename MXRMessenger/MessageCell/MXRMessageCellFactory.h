@@ -44,6 +44,8 @@
 - (instancetype)initWithCellConfigForMe:(MXRMessageCellConfiguration*)cellConfigForMe cellConfigForOthers:(MXRMessageCellConfiguration*)cellConfigForOthers;
 
 - (MXRMessageTextCellNodeBlock)cellNodeBlockWithText:(NSString*)text tableNode:(ASTableNode*)tableNode row:(NSInteger)row;
+- (MXRMessageTextCellNodeBlock)cellNodeBlockWithHtmlText:(NSString*)text tableNode:(ASTableNode*)tableNode row:(NSInteger)row;
+
 - (MXRMessageImageCellNodeBlock)cellNodeBlockWithImageURL:(NSURL*)imageURL showsPlayButton:(BOOL)showsPlayButton tableNode:(ASTableNode*)tableNode row:(NSInteger)row;
 - (MXRMessageMediaCollectionCellNodeBlock)cellNodeBlockWithMedia:(NSArray<id<MXRMessengerMedium>>*)media tableNode:(ASTableNode*)tableNode row:(NSInteger)row;
 
