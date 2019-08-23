@@ -60,9 +60,13 @@
         _textNode = [[ASTextNode alloc] init];
         _textNode.layerBacked = YES;
 
-        NSMutableAttributedString * attrStr = [[NSMutableAttributedString alloc] initWithData:[text dataUsingEncoding:NSUnicodeStringEncoding] 
-                                   options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType}
-                        documentAttributes:nil error:nil];
+        text = [text stringByAppendingString:[NSString stringWithFormat:@"<style>body{font-family: '%@'; font-size:%fpx;}</style>",
+                                                          [UIFont systemFontOfSize: 15.0].fontName,
+                                                          [UIFont systemFontOfSize: 15.0].pointSize]];
+        
+        NSMutableAttributedString * attrStr = [[NSMutableAttributedString alloc] initWithData:[text dataUsingEncoding:NSUnicodeStringEncoding]
+                                                                                      options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType}
+                                                                           documentAttributes:nil error:nil];
         _textNode.attributedText = attrStr;
         _backgroundImageNode = [[ASImageNode alloc] init];
         _backgroundImageNode.layerBacked = YES;
