@@ -34,7 +34,13 @@
         imageNode.contentMode = UIViewContentModeScaleAspectFill;
         imageNode.style.preferredSize = size;
         [self redrawWithCornersHavingRadius:cornersHavingRadius];
-        imageNode.URL = imageURL;
+        
+        if([imageURL.absoluteString hasPrefix:@"file"]){
+            imageNode.image = [UIImage imageWithContentsOfFile:imageURL.path];
+        }
+        else{
+            imageNode.URL = imageURL;
+        }
         
         if (showsPlayButton) {
             _playButtonNode = [[MXRPlayButtonNode alloc] init];

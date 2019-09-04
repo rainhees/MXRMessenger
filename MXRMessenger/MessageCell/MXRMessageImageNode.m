@@ -52,7 +52,13 @@
         self.style.preferredSize = _imageNode.style.preferredSize;
         _imageNode.contentMode = UIViewContentModeScaleAspectFill;
         _imageNode.delegate = self;
-        _imageNode.URL = imageURL;
+        
+        if([imageURL.absoluteString hasPrefix:@"file"]){
+            _imageNode.image = [UIImage imageWithContentsOfFile:imageURL.path];
+        }
+        else{
+            _imageNode.URL = imageURL;
+        }
         
         if (showsPlayButton) {
             _playButtonNode = [[MXRPlayButtonNode alloc] init];
