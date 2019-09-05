@@ -53,10 +53,7 @@
         _imageNode.contentMode = UIViewContentModeScaleAspectFill;
         _imageNode.delegate = self;
         
-        if([imageURL.absoluteString hasPrefix:@"file"]){
-            _imageNode.image = [UIImage imageWithContentsOfFile:imageURL.path];
-        }
-        else{
+        if(![imageURL.absoluteString hasPrefix:@"file"]){
             _imageNode.URL = imageURL;
         }
         
