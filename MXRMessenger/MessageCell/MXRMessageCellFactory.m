@@ -190,8 +190,8 @@ static inline BOOL MXRMessageContextNextShowsDate(MXRMessageContext c) { return 
         // we dont need to calculate if previous is showing date since we only show
         // dates in headers to determine corner rounding
         previousContext->isShowingDate = NO;
-        context->isShowingDate = context->timestamp != 0 && (floor(context->timestamp / 60) - floor(previousContext->timestamp)/60) >= 1;
-        nextContext->isShowingDate = nextContext->timestamp != 0 && (floor(nextContext->timestamp/60) - floor(context->timestamp)/60) >= 1;
+        context->isShowingDate = context->timestamp != 0 && (floor((context->timestamp)/60) - floor((previousContext->timestamp)/60)) >= 1;
+        nextContext->isShowingDate = nextContext->timestamp != 0 && (floor((nextContext->timestamp)/60) - floor((context->timestamp)/60)) >= 1;
     } else {
         previousContext->isShowingDate = context->isShowingDate = nextContext->isShowingDate = NO;
         previousContext->timestamp = context->timestamp = nextContext->timestamp = 0;
