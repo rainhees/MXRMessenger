@@ -54,7 +54,7 @@
     CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
     _toolbarContainerView = [[MXRMessengerInputToolbarContainerView alloc] initWithMessengerInputToolbar:self.toolbar constrainedSize:ASSizeRangeMake(CGSizeMake(screenWidth, 0), CGSizeMake(screenWidth, CGFLOAT_MAX))];
     _minimumBottomInset = self.toolbarContainerView.toolbarNode.calculatedSize.height;
-    _topInset = [self calculateTopInset];
+    _topInset = 0;
     
     self.node.tableNode.view.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.node.tableNode.view.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
